@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/581617cb71.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="apple-touch-icon" sizes="180x180" href="logo/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16x16.png">
@@ -36,12 +37,15 @@
       <!-- Splash -->
       <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
         <div class="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
-          <h1 class="mt-10 max-w-lg text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Wandr</h1>
+          <h1 class="mt-10 max-w-lg text-4xl font-bold tracking-tight sm:text-6xl">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#ff0d0d] to-[#ff810d] ">Wandr</span>
+          </h1>
           <p class="mt-6 text-lg leading-8 text-gray-600">You and your wand should pick each other</p>
           <div class="mt-10 flex items-center gap-x-6">
-            <a href="#"
-              class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get
-              started</a>
+            <a href="#get-started"
+              class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              Start Wandring
+            </a>
             <a href="#learn-more" class="text-sm font-semibold leading-6 text-gray-900">Learn more <span
                 aria-hidden="true">→</span></a>
           </div>
@@ -73,7 +77,7 @@
             <h2 class="text-base font-semibold leading-7 text-indigo-400">Why should the wand get all the say?</h2>
             <p
               class="mt-2 pb-1 text-3xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#ff0d0d] to-[#ff810d] sm:text-4xl">
-              Take the guesswork out
+              Stop wondering. Start Wandring.
             </p>
             <p class="mt-6 text-lg leading-8 text-gray-300">At Wandr, we believe that every caster
               deserves a wand that is truly tailored to their unique magical potential. Say goodbye to
@@ -85,7 +89,7 @@
               <div class="flex flex-col">
                 <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-white">
                   <i class="text-indigo-400 fa-solid fa-wand-sparkles"></i>
-                  Your wand, your way.
+                  Take the guesswork out.
                 </dt>
                 <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-300">
                   <p class="flex-auto">Using our groundbreaking wand-selection algorithm, Wandr
@@ -126,11 +130,86 @@
               </div>
             </dl>
           </div>
+          <div class="mt-10 flex items-center gap-x-6">
+            <a href="#get-started"
+              class="mx-auto rounded-md bg-gradient-to-r from-[#ff0d0d] to-[#ff810d] px-8 py-4 text-lg font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+              Start Wandring
+            </a>
+          </div>
         </div>
       </div>
+
+      <!-- Testimonials -->
+      <section class="lg:p-x8 bg-white px-6 py-24 sm:py-32" x-data="{
+        testimonials: [
+          {name: 'Judith B.', city: 'San Francisco', text: 'Wandr\'s algorithm works wonders! After a few swipes, I matched with a wand that\'s been the perfect fit. Wish I could say that about my dating app.'},
+          {name: 'Samuel M.', city: 'Sydney', text: 'As an eco-conscious wizard, I like knowing that my wand comes from sustainable materials. Phoenix feathers are cool I guess, but we can\'t just pluck all the phoenixes clean.'},
+          {name: 'Isabella R.', city: 'New York', text: 'Way less creepy than some tiny shop in London.'},
+          {name: 'Emma G.', city: 'Winnipeg', text: 'I was skeptical at first, but Wandr\'s seamless experience led to an instant connection with my wand. It blew me away.'},
+        ],
+        activeSlide: 0,
+        show: true,
+        periodMs: 8000,
+        timer: null,
+        changeSlide(num) {
+          $nextTick(() => {
+            if (this.timer) clearTimeout(this.timer);
+            this.show = false;
+            setTimeout(() => {
+              this.show = true;
+              this.activeSlide = num;
+              this.timer = setTimeout(() => this.nextSlide(), this.periodMs);
+            }, 100)
+          });
+        },
+        nextSlide() { this.changeSlide((this.activeSlide + 1) % this.testimonials.length) },
+        prevSlide() {
+          slide = this.activeSlide - 1;
+          if (slide < 0) slide = this.testimonials.length - 1;
+          this.changeSlide(slide);
+        },
+      }" x-init="timer = setTimeout(() => nextSlide(), periodMs);">
+        <div class="h-72">
+          <figure x-cloak x-show="show" x-transition class="mx-auto h-64 max-w-2xl">
+            <p class="sr-only">5 out of 5 stars</p>
+            <div class="flex gap-x-1 text-indigo-600">
+              <template x-for="i in [1, 2, 3, 4, 5]">
+                <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                    clip-rule="evenodd" />
+                </svg>
+              </template>
+            </div>
+            <blockquote
+              class="mt-10 text-xl font-semibold leading-8 tracking-tight text-gray-900 sm:text-2xl sm:leading-9">
+              <p x-text="testimonials[activeSlide].text" />
+            </blockquote>
+            <div class="text-sm leading-6 ml-6 mt-8">
+              <span>&mdash;</span>
+              <span class="font-semibold text-gray-900" x-text="testimonials[activeSlide].name"></span>
+              <span>,</span>
+              <span class="mt-0.5 text-gray-600" x-text="testimonials[activeSlide].city"></span>
+            </div>
+          </figure>
+        </div>
+        <div class="w-full flex items-center space-x-4 justify-center mb-8">
+          <button x-on:click="prevSlide()"><i class="text-2xl fa-solid fa-chevron-left"></i></button>
+          <template x-for="i in testimonials.length">
+            <i class="fa-circle" x-bind:class="{'fa-regular': i-1 != activeSlide, 'fa-solid': i-1 == activeSlide}" />
+          </template>
+          <button x-on:click="nextSlide()"><i class="text-2xl fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div class="w-full flex justify-center mt-10">
+          <a href="#get-started"
+            class="mx-auto rounded-md bg-gradient-to-r from-[#ff0d0d] to-[#ff810d] px-8 py-4 text-lg font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+            Start Wandring
+          </a>
+        </div>
+      </section>
+
     </div>
   </div>
-
 </body>
 
 </html>
