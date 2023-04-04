@@ -159,7 +159,7 @@
               this.show = true;
               this.activeSlide = num;
               this.timer = setTimeout(() => this.nextSlide(), this.periodMs);
-            }, 100)
+            }, 350)
           });
         },
         nextSlide() { this.changeSlide((this.activeSlide + 1) % this.testimonials.length) },
@@ -170,7 +170,10 @@
         },
       }" x-init="timer = setTimeout(() => nextSlide(), periodMs);">
         <div class="h-72">
-          <figure x-cloak x-show="show" x-transition class="mx-auto h-64 max-w-2xl">
+          <figure x-cloak x-show="show" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="translate-x-full opacity-50" x-transition:enter-end="translate-x-0 opacity-100"
+            x-transition:leave="transition ease-in duration-300" x-transition:leave-start="translate-x-0 opacity-100"
+            x-transition:leave-end="-translate-x-full opacity-0" class="mx-auto h-64 max-w-2xl">
             <p class="sr-only">5 out of 5 stars</p>
             <div class="flex gap-x-1 text-indigo-600">
               <template x-for="i in [1, 2, 3, 4, 5]">
