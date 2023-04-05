@@ -6,6 +6,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            wiggle: {
+              '0%, 100%': { transform: 'rotate(-10deg)' },
+              '50%': { transform: 'rotate(10deg)' },
+            }
+          },
+          animation: {
+            wiggle: 'wiggle 3s ease-in-out infinite',
+          }
+        }
+      }
+    }
+  </script>
   <script src="https://kit.fontawesome.com/581617cb71.js" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link rel="apple-touch-icon" sizes="180x180" href="logo/apple-touch-icon.png">
@@ -53,7 +70,7 @@
         <div class="flex h-16 items-center justify-between">
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <img class="h-8 w-8" src="/logo/logo - gradient tilted.svg" alt="Wandr">
+              <a href="/"><img class="h-8 w-8 animate-wiggle" src="/logo/logo - gradient tilted.svg" alt="Wandr"></a>
             </div>
             <div class="hidden md:block">
               <div class="ml-4 flex items-baseline space-x-4">
