@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-100 scroll-smooth">
+
+<head>
+  <title>Wandr</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <script src="https://kit.fontawesome.com/581617cb71.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="logo/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="logo/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="logo/favicon-16x16.png">
+  <link rel="manifest" href="logo/site.webmanifest">
+</head>
+
+<body class="h-full">
+  <div class="min-h-full" x-data="{
+    mobileMenuOpen: false,
+    material: null,
+    woods: [
+      { material: 'Wisteria', description: 'Symbolizes wisdom and creativity. Enhances focus and mental clarity.', stat: '+1 Brains' },
+      { material: 'Hawthorn', description: 'Fosters balance and intuition. Promotes inner growth and adaptability.', stat: '+1 Brains' },
+      { material: 'Pine', description: 'Embodies strength and resilience. Amplifies perseverance and courage.', stat: '+1 Brawn' },
+      { material: 'Oak', description: 'Symbolizes stability and power. Enhances endurance and determination.', stat: '+1 Brawn' },
+      { material: 'Crabapple', description: 'Inspires tenacity and persistence. Boosts confidence and resolve.', stat: '+1 Fight' },
+      { material: 'Dogwood', description: 'Promotes adaptability and resourcefulness. Increases agility and reflexes.', stat: '+1 Fight' },
+      { material: 'Birch', description: 'Purifying and cleansing. Excels at renewal and beginnings.', stat: '+1 Flight' },
+      { material: 'Bamboo', description: 'Symbolizes flexibility and grace. Encourages swift movement and tranquility.', stat: '+1 Flight' },
+      { material: 'Hickory', description: 'Embodies fortitude and perseverance. Enhances focus and determination.', stat: '+1 Grit' },
+      { material: 'Maple', description: 'Inspires balance and harmony. Promotes patience and calm under pressure.', stat: '+1 Grit' },
+      { material: 'Lilac', description: 'Encourages enchantment and allure. Amplifies charisma and mystique.', stat: '+1 Charm' },
+      { material: 'Cherry', description: 'Symbolizes love and passion. Enhances intuition and emotional connection.', stat: '+1 Charm' },
+    ]
+  }">
+    <nav class="bg-gray-800">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center">
+            <div class="flex-shrink-0">
+              <img class="h-8 w-8" src="/logo/logo - gradient tilted.svg" alt="Wandr">
+            </div>
+            <div class="hidden md:block">
+              <div class="ml-4 flex items-baseline space-x-4">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                  aria-current="page">Build your wand</a>
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:block">
+            <div class="ml-4 flex items-center md:ml-6">
+              <button type="button"
+                class="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                <span class="sr-only">View notifications</span>
+                <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+
+            </div>
+          </div>
+          <div class="-mr-2 flex md:hidden">
+            <!-- Mobile menu button -->
+            <button type="button" x-on:click="mobileMenuOpen = !mobileMenuOpen"
+              class="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              aria-controls="mobile-menu" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <!-- Menu open: "hidden", Menu closed: "block" -->
+              <svg class="h-6 w-6" x-bind:class="mobileMenuOpen ? 'hidden' : 'block'" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <!-- Menu open: "block", Menu closed: "hidden" -->
+              <svg class="h-6 w-6" x-bind:class="mobileMenuOpen ? 'block' : 'hidden'" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="md:hidden" x-cloak x-show="mobileMenuOpen" id="mobile-menu">
+        <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+          <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium"
+            aria-current="page">Build your wand</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-white shadow">
+      <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <h1 class="text-3xl font-bold tracking-tight text-gray-900">Build Your Wand</h1>
+      </div>
+    </header>
+    <main>
+      <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+        <!-- Form -->
+        <div class="space-y-10 divide-y divide-gray-900/10">
+          <!-- Personal Info -->
+          <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
+            <div class="px-4 sm:px-0">
+              <h2 class="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
+              <p class="mt-1 text-sm leading-6 text-gray-600">Tell us a bit about yourself to help
+                us craft the perfect wand for you as an individual.</p>
+            </div>
+
+            <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+              <div class="px-4 py-6 sm:p-8">
+                <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                  <div class="sm:col-span-3">
+                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
+                    <div class="mt-2">
+                      <input type="text" name="first-name" id="first-name" autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+
+                  <div class="sm:col-span-3">
+                    <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
+                    <div class="mt-2">
+                      <input type="text" name="last-name" id="last-name" autocomplete="family-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+
+                  <div class="sm:col-span-4">
+                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Pronouns</label>
+                    <div class="mt-2">
+                      <input type="text" name="first-name" id="first-name" autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+
+                  <div class="sm:col-span-4">
+                    <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">Age</label>
+                    <div class="mt-2">
+                      <input type="number" name="first-name" id="first-name" autocomplete="given-name"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    </div>
+                  </div>
+
+                  <div class="col-span-full">
+                    <label for="about" class="block text-sm font-medium leading-6 text-gray-900">About</label>
+                    <div class="mt-2">
+                      <textarea id="about" name="about" rows="3"
+                        class="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:py-1.5 sm:text-sm sm:leading-6"></textarea>
+                    </div>
+                    <p class="mt-3 text-sm leading-6 text-gray-600">Write a few sentences about yourself.</p>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
+            <div class="px-4 sm:px-0">
+              <h2 class="text-base font-semibold leading-7 text-gray-900">Material</h2>
+              <p class="mt-1 text-sm leading-6 text-gray-600">The material that makes up the body of your wand gives it
+                it's unique feel. Choose a traditional wood or one of our modern alternatives.</p>
+            </div>
+
+            <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-8">
+              <fieldset>
+                <legend class="text-base font-semibold leading-6 text-gray-900">Wood</legend>
+
+                <div class="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
+                  <template x-for="wood in woods">
+                    <!--
+                      Checked: "border-transparent", Not Checked: "border-gray-300"
+                      Active: "border-indigo-600 ring-2 ring-indigo-600"
+                    -->
+                    <label
+                      class="relative flex cursor-pointer rounded-lg border bg-white p-4 shadow-sm focus:outline-none"
+                      x-bind:class="material == wood.material ? 'border-transparent' : 'border-gray-300'"
+                      x-on:click="material = wood.material">
+                      <input type="radio" name="project-type" value="Newsletter" class="sr-only"
+                        aria-labelledby="project-type-0-label"
+                        aria-describedby="project-type-0-description-0 project-type-0-description-1">
+                      <span class="flex flex-1">
+                        <span class="flex flex-col">
+                          <span id="project-type-0-label" class="block text-sm font-medium text-gray-900"
+                            x-text="wood.material"></span>
+                          <span id="project-type-0-description-0" class="mt-1 flex items-center text-sm text-gray-500"
+                            x-text="wood.description"></span>
+                          <span id="project-type-0-description-1" class="mt-6 text-sm font-medium text-gray-900"
+                            x-text="wood.stat"></span>
+                        </span>
+                      </span>
+                      <!-- Not Checked: "invisible" -->
+                      <svg class="h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                          clip-rule="evenodd" />
+                      </svg>
+                      <!--
+                      Active: "border", Not Active: "border-2"
+                      Checked: "border-indigo-600", Not Checked: "border-transparent"
+                    -->
+                      <span class="pointer-events-none absolute -inset-px rounded-lg border-2"
+                        aria-hidden="true"></span>
+                    </label>
+                  </template>
+                </div>
+              </fieldset>
+
+            </form>
+          </div>
+
+          <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
+            <div class="px-4 sm:px-0">
+              <h2 class="text-base font-semibold leading-7 text-gray-900">Core</h2>
+              <p class="mt-1 text-sm leading-6 text-gray-600">The core of your wand lends it much of it's magical
+                properties. Traditional wands may use rare and exotic materials, but our arcane engineers have
+                developed methods of replicating the properties of these materials in eco-friendly ways through
+                the use of sustainable and synthetic alternatives.</p>
+            </div>
+
+            <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2"></form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+
+</html>
