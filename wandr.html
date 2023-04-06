@@ -35,6 +35,7 @@
   <div class="min-h-full" x-data="{
     mobileMenuOpen: false,
     material: null,
+    core: null,
     materialGroups: {
       Woods: [
         { material: 'Wisteria', description: 'Wise and creative. Enhances focus and mental clarity.', stat: '+1 Brains' },
@@ -60,8 +61,13 @@
       ],
       Alternatives: [
         { material: 'Acrylic', description: 'Transparent/translucent and conducts light. Works great with an LED core.', stat: '+1 ???' },
-        { material: 'Polyethylene plastic', description: 'Non-toxic, with hundreds of colors to choose from', stat: '+1 ???' },
-        { material: 'Carbon fiber', description: 'Ultra-lightweight and modern', stat: '+1 ???' },
+        { material: 'Polyethylene plastic', description: '3D-printed and non-toxic, with hundreds of colors to choose from.', stat: '+1 ???' },
+        { material: 'Carbon fiber', description: 'Ultra-lightweight and modern.', stat: '+1 ???' },
+      ]
+    }
+    coreGroups: {
+      Cores: [
+        { material: 'Carbon fiber', description: 'Ultra-lightweight and modern.', stat: '+1 ???' },
       ]
     }
   }">
