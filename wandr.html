@@ -334,7 +334,7 @@
 
       <!-- submit -->
       <div class="relative isolate bg-gray-900">
-        <div class="mx-auto max-w-6xl grid gap-20 grid-cols-1 px-4 py-10 sm:py-20 sm:grid-cols-3 sm:gap-5 ">
+        <div class="mx-auto max-w-3xl grid gap-20 grid-cols-1 px-4 py-10 sm:py-20 sm:grid-cols-2 sm:gap-5 ">
 
           <div class="text-center sm:text-left">
             <h2 class="text-3xl font-bold tracking-tight text-white">Your Wand</h2>
@@ -358,25 +358,15 @@
             </dl>
           </div>
 
-          <div class="text-white flex">
-            <div x-show="body && core" class="flex flex-1 flex-col justify-center">
-              <div x-cloak x-show="compatible()"
-                class="flex flex-col space-y-4 items-center justify-center text-center">
-                <i class="fa-solid fa-wand-sparkles text-emerald-400 text-6xl animate-pulse"></i>
-                <h3 class="text-center">Great Choice!</h3>
-              </div>
-              <div x-cloak x-show="!compatible()"
-                class="flex flex-col space-y-4 items-center justify-center text-center">
-                <i class="fa-solid fa-hand text-rose-600 text-6xl animate-pulse"></i>
-                <h3>Sorry, those materials aren't compatible. If your body material and core material
-                  grant the same stat bonus (for example, if they're both +1 Strength) then they are
-                  too magically similar and will reject each other.
-                </h3>
-              </div>
+          <div class="flex flex-1 items-center justify-center" x-bind:class="(body && core) || 'invisible'">
+            <div x-cloak x-show="!compatible()"
+              class="text-white flex flex-col space-y-4 items-center justify-center text-center">
+              <i class="fa-solid fa-hand text-rose-600 text-6xl animate-pulse"></i>
+              <h3>Sorry, those materials aren't compatible. If your body material and core material
+                grant the same stat bonus (for example, if they're both +1 Strength) then they are
+                too magically similar and will reject each other.
+              </h3>
             </div>
-          </div>
-
-          <div class="flex flex-1 items-center justify-center sm:justify-end">
             <button x-show="compatible()" type="submit" class="rounded-md bg-gradient-to-r from-[#ff0d0d] to-[#ff810d] px-8 py-6 text-center
                   text-xl font-semibold text-white shadow-sm hover:opacity-90
                   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
