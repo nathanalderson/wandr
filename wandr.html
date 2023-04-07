@@ -106,7 +106,8 @@
     <main>
       <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
         <!-- Form -->
-        <div class="space-y-10 divide-y divide-gray-900/10">
+        <form id="wand-form" action="https://hook.us1.make.com/euk8tg140qyg2obfu41h69rf47kix9cl" method="POST"
+          class="space-y-10 divide-y divide-gray-900/10">
           <!-- Personal Info -->
           <div class="grid grid-cols-1 gap-x-8 gap-y-8 md:grid-cols-3">
             <div class="px-4 sm:px-0">
@@ -116,7 +117,7 @@
                 encouraged.</p>
             </div>
 
-            <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+            <div class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
               <div class="px-4 py-6 sm:p-8">
                 <div class="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                   <div class="sm:col-span-3">
@@ -201,7 +202,7 @@
                   </div>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
 
           <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
@@ -211,7 +212,7 @@
                 it's unique feel. Choose a traditional wood or one of our modern alternatives.</p>
             </div>
 
-            <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-8">
+            <div class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-8">
               <fieldset>
                 <template x-for="[groupName, bodyGroup] in Object.entries(bodyGroups)">
                   <div>
@@ -263,7 +264,7 @@
                 </template>
               </fieldset>
 
-            </form>
+            </div>
           </div>
 
           <div class="grid grid-cols-1 gap-x-8 gap-y-8 pt-10 md:grid-cols-3">
@@ -275,7 +276,7 @@
                 materials with sustainable and modern alternatives.</p>
             </div>
 
-            <form class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-8">
+            <div class="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2 p-8">
               <fieldset>
                 <template x-for="[groupName, materialGroup] in Object.entries(coreGroups)">
                   <div>
@@ -327,9 +328,9 @@
                 </template>
               </fieldset>
 
-            </form>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
 
       <!-- submit -->
@@ -367,7 +368,7 @@
                 too magically similar and will reject each other.
               </h3>
             </div>
-            <button x-show="compatible()" type="submit" class="rounded-md bg-gradient-to-r from-[#ff0d0d] to-[#ff810d] px-8 py-6 text-center
+            <button x-show="compatible()" type="submit" form="wand-form" class="rounded-md bg-gradient-to-r from-[#ff0d0d] to-[#ff810d] px-8 py-6 text-center
                   text-xl font-semibold text-white shadow-sm hover:opacity-90
                   focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
                 focus-visible:outline-indigo-500">Order Now</button>
