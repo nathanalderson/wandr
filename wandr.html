@@ -343,16 +343,16 @@
                 <dt class="text-sm font-medium text-indigo-400">Body</dt>
                 <dd class="mt-1 text-lg text-white flex flex-col">
                   <span x-show="!body">Please select a body material</span>
-                  <span x-show="body" x-text="body.material"></span>
-                  <span x-show="body" x-text="body.stat" class="text-gray-400 text-base"></span>
+                  <span x-show="body" x-text="body && body.material"></span>
+                  <span x-show="body" x-text="body && body.stat" class="text-gray-400 text-base"></span>
                 </dd>
               </div>
               <div class="">
                 <dt class="text-sm font-medium text-indigo-400">Core</dt>
                 <dd class="mt-1 text-lg text-white flex flex-col">
                   <span x-show="!core">Please select a core material</span>
-                  <span x-show="core" x-text="core.material"></span>
-                  <span x-show="core" x-text="core.stat" class="text-gray-400 text-base"></span>
+                  <span x-show="core" x-text="core && core.material"></span>
+                  <span x-show="core" x-text="core && core.stat" class="text-gray-400 text-base"></span>
                 </dd>
               </div>
             </dl>
